@@ -17,15 +17,15 @@ class NewsDataRepository: BaseDataRepository, NewsRepository {
     
     // MARK: - Dependencies
     
-    private let apiProvider: GenericApiProvider
     private let newsFactory: NewsFactory
+    private let genericApiProvider: GenericApiProvider
     
     
     // MARK: - Init
     
-    init(apiProvider: GenericApiProvider, newsFactory: NewsFactory, localProvider: LocalProvider) {
-        self.apiProvider = apiProvider
+    init(newsFactory: NewsFactory, genericApiProvider: GenericApiProvider, localProvider: LocalProvider) {
         self.newsFactory = newsFactory
+        self.genericApiProvider = genericApiProvider
         super.init(localProvider: localProvider)
     }
     
@@ -40,7 +40,7 @@ class NewsDataRepository: BaseDataRepository, NewsRepository {
     func getNews(for category: String) -> Single<[NewsEntity]> {
         let request = NewsRequest(category: category)
         
-        return apiProvider.request(NewsTarget.getNews(request: request))
+        return genericApiProvider.request(NewsTarget.getNews(request: request))
             .map(NewsResponse.self)
             .flatMap { [weak self] response in
                 guard let self = self else { return .error(CustomError.mapping) }
