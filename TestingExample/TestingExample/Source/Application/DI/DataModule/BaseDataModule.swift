@@ -29,23 +29,5 @@ public class BaseDataModule {
     func resolveProviders(_ defaultContainer: Container) {}
     
     func resolveSingletons(_ defaultContainer: Container) {}
-}
-
-
-// ------------------------------------
-// TODO: - Revisar
-
-public protocol DataModuleProtocol {
-    func resolveSingletons(_ defaultContainer: Container)
-    func resolveFactories(_ defaultContainer: Container)
-    // ...
-}
-
-extension DataModuleProtocol {
-    func resolveSingletons(_ defaultContainer: Container) {}
-    func resolveFactories(_ defaultContainer: Container) {}
-}
-
-class MyResolver: DataModuleProtocol {
-    // Implementar solo las funciones necesarias
+    
 }

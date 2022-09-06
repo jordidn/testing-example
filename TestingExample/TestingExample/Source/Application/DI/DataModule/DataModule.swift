@@ -23,7 +23,6 @@ public class DataModule {
         NewsDataModule().setup(defaultContainer)
         
         // ... (Register new modules)
-        MyResolver().setup(defaultContainer) // TODO: - Borrar
     }
     
     
@@ -51,18 +50,6 @@ public class DataModule {
     
     private static func resolveCommonUseCases(_ defaultContainer: Container) {
         // ... (Register common useCases)
-    }
-    
-}
-
-
-
-// TODO: - Revisar
-private extension DataModuleProtocol {
-    
-    func setup(_ defaultContainer: Container) {
-        resolveSingletons(defaultContainer)
-        resolveFactories(defaultContainer)
     }
     
 }
