@@ -10,11 +10,12 @@ import UIKit
 
 enum StoryboardNames: String {
     case categories
+    case news
 }
 
 public protocol Wireframe {
     func categories() -> Screen
-    
+    func news(with category: String) -> Screen
 }
 
 public extension Wireframe {

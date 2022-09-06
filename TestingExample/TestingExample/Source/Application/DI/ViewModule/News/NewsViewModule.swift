@@ -9,16 +9,16 @@ import Swinject
 import SwinjectStoryboard
 
 public class NewsViewModule: BaseViewModule {
-
+    
     override func resolvePresenters(_ defaultContainer: Container) {
-        defaultContainer.register(CategoriesPresenter.self) { _ in
-            CategoriesPresenter(getCategoriesUseCase: SwinjectStoryboard.synchronizedResolver.resolve(GetCategoriesUseCase.self)!,
-                                schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
+        defaultContainer.register(NewsPresenter.self) { _ in
+            NewsPresenter(getNewsUseCase: SwinjectStoryboard.synchronizedResolver.resolve(GetNewsUseCase.self)!,
+                          schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
         }
     }
     
     override func resolveViewControllers(_ defaultContainer: Container) {
-        register(vc: CategoriesViewController.self)
+        register(vc: NewsViewController.self)
     }
-
+    
 }

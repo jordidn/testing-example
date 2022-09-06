@@ -55,8 +55,7 @@ class CategoriesPresenter: BasePresenter {
     // MARK: - Public methods
     
     func didSelectCategory(_ category: String) {
-        // TODO: - Open wireframe news view controller
-        print("did select: \(category)")
+        wireframe.news(with: category).show(animated: true)
     }
     
 }

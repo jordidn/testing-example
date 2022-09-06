@@ -17,6 +17,7 @@ public class ViewModule {
         resolveCommonDependencies(defaultContainer)
 
         // Module dependencies
+        CategoriesViewModule().setup(defaultContainer)
         NewsViewModule().setup(defaultContainer)
         
         // ... (Register new modules)

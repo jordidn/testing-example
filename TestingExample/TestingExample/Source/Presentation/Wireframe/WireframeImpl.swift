@@ -23,5 +23,12 @@ public class WireframeImpl: Wireframe {
         
         return Screen(viewController: navigationController, isModal: false, animated: true)
     }
+    
+    public func news(with category: String) -> Screen {
+        let viewController = NewsViewController.instantiate(storyboard: .news)
+        viewController.presenter.setup(category: category)
+        
+        return Screen(viewController: viewController, isModal: false, animated: true)
+    }
 
 }
