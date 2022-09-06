@@ -18,8 +18,10 @@ public class WireframeImpl: Wireframe {
     // MARK: - Implementation
     
     public func categories() -> Screen {
-        let vc = CategoriesViewController.instantiate(storyboard: .categories)
-        return Screen(viewController: vc, isModal: false, animated: true)
+        let viewController = CategoriesViewController.instantiate(storyboard: .categories)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        return Screen(viewController: navigationController, isModal: false, animated: true)
     }
 
 }

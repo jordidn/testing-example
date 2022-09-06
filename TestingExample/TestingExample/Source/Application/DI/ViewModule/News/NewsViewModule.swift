@@ -12,7 +12,8 @@ public class NewsViewModule: BaseViewModule {
 
     override func resolvePresenters(_ defaultContainer: Container) {
         defaultContainer.register(CategoriesPresenter.self) { _ in
-            CategoriesPresenter(schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
+            CategoriesPresenter(getCategoriesUseCase: SwinjectStoryboard.synchronizedResolver.resolve(GetCategoriesUseCase.self)!,
+                                schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
         }
     }
     

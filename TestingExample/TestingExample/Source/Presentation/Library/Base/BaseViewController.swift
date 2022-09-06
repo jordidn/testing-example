@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewController<P: BasePresenter>: UIViewController, BaseView {
+class BaseViewController<P: BasePresenter>: UIViewController, BaseViewProtocol {
     
     typealias Presenter = P
 

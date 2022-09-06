@@ -11,7 +11,7 @@ import UIKit
 
 class BasePresenter: NSObject {
     
-    internal weak var baseView: BaseView?
+    internal weak var baseView: BaseViewProtocol?
     internal var disposeBag: DisposeBag
 
     //TOIMPROVE: Make these two constants and internal. Must be presenter's dependencies and VC shouldn't have access to them.
@@ -32,7 +32,7 @@ class BasePresenter: NSObject {
     func viewWillDisappear() {}
     func viewDidDisappear() {}
     
-    func attachView<T: BaseView>(view: T) {
+    func attachView<T: BaseViewProtocol>(view: T) {
         self.baseView = view
     }
     
@@ -47,6 +47,8 @@ class BasePresenter: NSObject {
         switch customError {
         case .mapping:
             print("Mapping Error")
+        case .generic:
+            print("Generic Error")
         }
     }
     
