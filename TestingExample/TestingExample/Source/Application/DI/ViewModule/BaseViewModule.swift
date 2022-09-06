@@ -6,10 +6,16 @@
 //
 
 import Swinject
+import SwinjectStoryboard
 
 public class BaseViewModule {
     
+    // MARK: - Properties
+    
     private var defaultContainer: Container?
+    
+    
+    // MARK: - Public methods
     
     func setup(_ defaultContainer: Container) {
         self.defaultContainer = defaultContainer
@@ -21,12 +27,13 @@ public class BaseViewModule {
     
     func resolveViewControllers(_ defaultContainer: Container) {}
     
-//    func register<P>(vc: BaseViewController<P>.Type) {
-//        if let container = self.defaultContainer {
-//            container.storyboardInitCompleted(vc) { r, c in
-//                c.presenter = SwinjectStoryboard.synchronizedResolver.resolve(vc.Presenter.self)!
-//                c.presenter.wireframe = SwinjectStoryboard.synchronizedResolver.resolve(Wireframe.self)!
-//            }
-//        }
-//    }
+    func register<P>(vc: BaseViewController<P>.Type) {
+        if let container = self.defaultContainer {
+            container.storyboardInitCompleted(vc) { r, c in
+                c.presenter = SwinjectStoryboard.synchronizedResolver.resolve(vc.Presenter.self)!
+                c.presenter.wireframe = SwinjectStoryboard.synchronizedResolver.resolve(Wireframe.self)!
+            }
+        }
+    }
+    
 }

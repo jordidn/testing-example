@@ -38,6 +38,7 @@ public class BaseDataModule {
 public protocol DataModuleProtocol {
     func resolveSingletons(_ defaultContainer: Container)
     func resolveFactories(_ defaultContainer: Container)
+    // ...
 }
 
 extension DataModuleProtocol {
@@ -46,5 +47,5 @@ extension DataModuleProtocol {
 }
 
 class MyResolver: DataModuleProtocol {
-    
+    // Implementar solo las funciones necesarias
 }

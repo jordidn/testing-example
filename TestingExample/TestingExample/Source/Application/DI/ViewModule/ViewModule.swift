@@ -10,47 +10,29 @@ import SwinjectStoryboard
 
 public class ViewModule {
     
+    // MARK: - Public methods
+    
     public static func setup(_ defaultContainer: Container) {
+        // Common dependencies
+        resolveCommonDependencies(defaultContainer)
+
+        // Module dependencies
+        NewsViewModule().setup(defaultContainer)
         
-//        defaultContainer.register(Wireframe.self) { _ in
-//            WireframeImpl()
-//        }.inObjectScope(.container)
-//
-//        //MARK: Base
-//        defaultContainer.register(BasePresenter.self) { _ in
-//            BasePresenter(schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
-//        }
-//
-//        ProductDetailViewModule().setup(defaultContainer)
-//        ProductGridViewModule().setup(defaultContainer)
-//        WishlistViewModule().setup(defaultContainer)
-//        LaunchAppViewModule().setup(defaultContainer)
-//        HomeViewModule().setup(defaultContainer)
-//        ShoppingGuideViewModule().setup(defaultContainer)
-//        ShoppingCartViewModule().setup(defaultContainer)
-//        StoreViewModule().setup(defaultContainer)
-//        LoginViewModule().setup(defaultContainer)
-//        PasswordViewModule().setup(defaultContainer)
-//        ProfileViewModule().setup(defaultContainer)
-//        MyOrdersViewModule().setup(defaultContainer)
-//        RegisterViewModule().setup(defaultContainer)
-//        ScannerViewModule().setup(defaultContainer)
-//        LegalDocumentViewModule().setup(defaultContainer)
-//        MarketingSpotViewModule().setup(defaultContainer)
-//        WebViewViewModule().setup(defaultContainer)
-//        CategoryViewModule().setup(defaultContainer)
-//        BershkaStyleViewModule().setup(defaultContainer)
-//        GiftCartViewModule().setup(defaultContainer)
-//        DenimLabViewModule().setup(defaultContainer)
-//        SubscribeNewsletterViewModule().setup(defaultContainer)
-//        ShippingViewModule().setup(defaultContainer)
-//        SearchViewModule().setup(defaultContainer)
-//        CheckoutViewModule().setup(defaultContainer)
-//        StitchLabViewModule().setup(defaultContainer)
-//        PrintLabViewModule().setup(defaultContainer)
-//        StoreFinderViewModule().setup(defaultContainer)
-//        LandingViewModule().setup(defaultContainer)
-//        PdfViewerViewModule().setup(defaultContainer)
-//        DropoffStoreViewModule().setup(defaultContainer)
+        // ... (Register new modules)
     }
+    
+    
+    // MARK: - Private methods
+    
+    private static func resolveCommonDependencies(_ defaultContainer: Container) {
+        defaultContainer.register(Wireframe.self) { _ in
+            WireframeImpl()
+        }.inObjectScope(.container)
+        
+        defaultContainer.register(BasePresenter.self) { _ in
+            BasePresenter(schedulers: SwinjectStoryboard.synchronizedResolver.resolve(Schedulers.self)!)
+        }
+    }
+    
 }
